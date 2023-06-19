@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import pl.aml.bk.imdgpoc.cache.InfoCacheInitializer;
+import pl.aml.bk.imdgpoc.cache.HazelcastCacheInitializer;
+import pl.aml.bk.imdgpoc.cache.HazelcastStatics;
 
 import static com.hazelcast.core.Hazelcast.newHazelcastInstance;
 
@@ -18,7 +19,7 @@ public class HazelcastConfiguration {
     @Profile("kubernetes")
     public Config hazelcastConfigK8s() {
         Config config = new Config();
-        config.getMapConfig("infoCache")
+        config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
                 .setAsyncBackupCount(0);
         config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
@@ -34,7 +35,7 @@ public class HazelcastConfiguration {
     @Profile("local")
     public Config hazelcastConfigLocal() {
         Config config = new Config();
-        config.getMapConfig("infoCache")
+        config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
                 .setAsyncBackupCount(0);
 
@@ -49,8 +50,8 @@ public class HazelcastConfiguration {
 
 
     @Bean
-    public InfoCacheInitializer infoCacheInitializer(@Qualifier("mainInstance") HazelcastInstance hazelcastInstance) {
-        return new InfoCacheInitializer(hazelcastInstance);
+    public HazelcastCacheInitializer infoCacheInitializer(@Qualifier("mainInstance") HazelcastInstance hazelcastInstance) {
+        return new HazelcastCacheInitializer(hazelcastInstance);
     }
 
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CacheInitializationRunner implements CommandLineRunner {
 
-    private final InfoCacheInitializer infoCacheInitializer;
+    private final CacheInitializer infoCacheInitializer;
 
     @Override
     public void run(String... args) {
