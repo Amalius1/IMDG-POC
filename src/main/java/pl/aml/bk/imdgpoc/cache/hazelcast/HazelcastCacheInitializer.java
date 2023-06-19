@@ -13,6 +13,8 @@ import pl.aml.bk.imdgpoc.common.logging.LogExecutionTime;
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
 import java.net.InetAddress;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import static pl.aml.bk.imdgpoc.cache.hazelcast.HazelcastStatics.INITIALIZATION_LOCK;
@@ -39,11 +41,14 @@ public class HazelcastCacheInitializer implements HazelcastInstanceAware, CacheI
         if (initializationLock.tryLock()) {
             try {
                 if (cacheMap.isEmpty()) {
+                    Map<UUID, InfoDto> localMap = new HashMap<>();
                     log.info("Started initialization on host {}", InetAddress.getLocalHost().getHostName());
                     for (int i = 0; i < initialCount; i++) {
                         InfoDto infoDto = new InfoDto("Random info number: " + i, InetAddress.getLocalHost().getHostName());
-                        cacheMap.put(infoDto.id(), infoDto);
+
+                        localMap.put(infoDto.id(), infoDto);
                     }
+                    cacheMap.putAll(localMap);
                 }
             } catch (Exception e) {
                 log.error("Exception during cache initialization", e);
