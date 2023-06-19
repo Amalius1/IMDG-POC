@@ -22,13 +22,9 @@ public class HazelcastConfiguration {
     @Profile("kubernetes")
     public Config hazelcastConfigK8s() {
         Config config = new Config();
-        EvictionConfig evictionConfig = new EvictionConfig();
-        evictionConfig.setSize(Integer.MAX_VALUE);
-        evictionConfig.setMaxSizePolicy(MaxSizePolicy.PER_PARTITION);
         config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
-                .setAsyncBackupCount(0)
-                .setEvictionConfig(evictionConfig);
+                .setAsyncBackupCount(0);
         config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
         config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
         config.getNetworkConfig().getJoin().getKubernetesConfig().setEnabled(true)
@@ -42,13 +38,9 @@ public class HazelcastConfiguration {
     @Profile("local")
     public Config hazelcastConfigLocal() {
         Config config = new Config();
-        EvictionConfig evictionConfig = new EvictionConfig();
-        evictionConfig.setSize(Integer.MAX_VALUE);
-        evictionConfig.setMaxSizePolicy(MaxSizePolicy.PER_PARTITION);
         config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
-                .setAsyncBackupCount(0)
-                .setEvictionConfig(evictionConfig);
+                .setAsyncBackupCount(0);
 
         return config;
     }
