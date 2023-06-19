@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 import pl.aml.bk.imdgpoc.service.InfoService;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,6 +51,11 @@ public class InfoController {
             return ResponseEntity.accepted().build();
         }
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<BigInteger> count() {
+        return ResponseEntity.ok(infoService.count());
     }
 
 }

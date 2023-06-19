@@ -6,10 +6,11 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-import pl.aml.bk.imdgpoc.cache.HazelcastStatics;
+import pl.aml.bk.imdgpoc.cache.hazelcast.HazelcastStatics;
 import pl.aml.bk.imdgpoc.common.logging.LogExecutionTime;
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
+import java.math.BigInteger;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,4 +69,9 @@ public class InfoHazelcastRepository implements InfoRepository {
         return new ArrayList<>(infoCache.values());
     }
 
+    @Override
+    public BigInteger count() {
+        IMap<UUID, InfoDto> infoCache = hazelcastInstance.getMap(HazelcastStatics.INFO_CACHE);
+        return BigInteger.valueOf(infoCache.size());
+    }
 }

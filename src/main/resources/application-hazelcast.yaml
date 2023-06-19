@@ -1,0 +1,21 @@
+management:
+  endpoint:
+    web:
+      exposure:
+        include: prometheus, health
+
+metrics:
+  enabled: false
+
+hazelcast:
+  cp-subsystem:
+    cp-member-count: 7
+    locks:
+      initializationLock:
+        lock-acquire-limit: 0
+
+  diagnostics:
+    enabled: false
+
+parameters:
+  initialCount: 1000000

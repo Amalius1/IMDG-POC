@@ -1,13 +1,16 @@
 package pl.aml.bk.imdgpoc.config;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.EvictionConfig;
+import com.hazelcast.config.MaxSizePolicy;
 import com.hazelcast.core.HazelcastInstance;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import pl.aml.bk.imdgpoc.cache.HazelcastCacheInitializer;
-import pl.aml.bk.imdgpoc.cache.HazelcastStatics;
+import pl.aml.bk.imdgpoc.cache.hazelcast.HazelcastCacheInitializer;
+import pl.aml.bk.imdgpoc.cache.hazelcast.HazelcastStatics;
 
 import static com.hazelcast.core.Hazelcast.newHazelcastInstance;
 
@@ -19,9 +22,13 @@ public class HazelcastConfiguration {
     @Profile("kubernetes")
     public Config hazelcastConfigK8s() {
         Config config = new Config();
+        EvictionConfig evictionConfig = new EvictionConfig();
+        evictionConfig.setSize(Integer.MAX_VALUE);
+        evictionConfig.setMaxSizePolicy(MaxSizePolicy.PER_PARTITION);
         config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
-                .setAsyncBackupCount(0);
+                .setAsyncBackupCount(0)
+                .setEvictionConfig(evictionConfig);
         config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
         config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
         config.getNetworkConfig().getJoin().getKubernetesConfig().setEnabled(true)
@@ -35,9 +42,13 @@ public class HazelcastConfiguration {
     @Profile("local")
     public Config hazelcastConfigLocal() {
         Config config = new Config();
+        EvictionConfig evictionConfig = new EvictionConfig();
+        evictionConfig.setSize(Integer.MAX_VALUE);
+        evictionConfig.setMaxSizePolicy(MaxSizePolicy.PER_PARTITION);
         config.getMapConfig(HazelcastStatics.INFO_CACHE)
                 .setBackupCount(1)
-                .setAsyncBackupCount(0);
+                .setAsyncBackupCount(0)
+                .setEvictionConfig(evictionConfig);
 
         return config;
     }
@@ -50,9 +61,9 @@ public class HazelcastConfiguration {
 
 
     @Bean
-    public HazelcastCacheInitializer infoCacheInitializer(@Qualifier("mainInstance") HazelcastInstance hazelcastInstance) {
-        return new HazelcastCacheInitializer(hazelcastInstance);
+    public HazelcastCacheInitializer infoCacheInitializer(@Qualifier("mainInstance") HazelcastInstance hazelcastInstance,
+                                                          @Value("${parameters.initialCount:100000}") Integer initializationCount) {
+        return new HazelcastCacheInitializer(hazelcastInstance, initializationCount);
     }
-
 
 }

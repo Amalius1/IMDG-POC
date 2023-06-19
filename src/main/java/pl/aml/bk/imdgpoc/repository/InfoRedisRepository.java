@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,6 +36,11 @@ public class InfoRedisRepository implements InfoRepository {
 
     @Override
     public List<InfoDto> findAll() {
+        return null;
+    }
+
+    @Override
+    public BigInteger count() {
         return null;
     }
 }

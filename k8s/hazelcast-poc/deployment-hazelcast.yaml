@@ -26,13 +26,18 @@ spec:
             httpGet:
               port: 8080
               path: /actuator/health
-            initialDelaySeconds: 10
+            initialDelaySeconds: 240
             periodSeconds: 3
           readinessProbe:
             httpGet:
               port: 8080
               path: /actuator/health
-            initialDelaySeconds: 10
+            initialDelaySeconds: 240
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "hazelcast,kubernetes"
+            - name: parameters.initialCount
+              value: "1000000"
 
 ---
 

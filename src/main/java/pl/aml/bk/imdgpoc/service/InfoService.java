@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 import pl.aml.bk.imdgpoc.repository.InfoRepository;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,5 +37,9 @@ public class InfoService {
 
     public boolean delete(UUID id) {
         return false;
+    }
+
+    public BigInteger count() {
+        return infoIMDGRepository.count();
     }
 }

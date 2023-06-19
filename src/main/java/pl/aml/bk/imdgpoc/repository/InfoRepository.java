@@ -2,6 +2,7 @@ package pl.aml.bk.imdgpoc.repository;
 
 import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,5 +17,7 @@ public interface InfoRepository {
     InfoDto findById(UUID id);
 
     List<InfoDto> findAll();
+
+    BigInteger count();
 
 }
