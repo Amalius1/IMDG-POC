@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.cache;
+package pl.aml.bk.imdgpoc.cache;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

@@ -1,8 +1,8 @@
-package pl.aml.bk.hazelcastpoc.repository;
+package pl.aml.bk.imdgpoc.repository;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.repository;
+package pl.aml.bk.imdgpoc.repository;
 
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
@@ -6,7 +6,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
 import java.net.InetAddress;
 import java.util.ArrayList;

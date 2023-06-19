@@ -1,6 +1,6 @@
-package pl.aml.bk.hazelcastpoc.repository;
+package pl.aml.bk.imdgpoc.repository;
 
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
 import java.util.List;
 import java.util.UUID;

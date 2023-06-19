@@ -1,11 +1,11 @@
-package pl.aml.bk.hazelcastpoc.controller;
+package pl.aml.bk.imdgpoc.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
-import pl.aml.bk.hazelcastpoc.service.InfoService;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.service.InfoService;
 
 import java.util.List;
 import java.util.UUID;

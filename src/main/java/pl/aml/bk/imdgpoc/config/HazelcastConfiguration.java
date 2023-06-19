@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.config;
+package pl.aml.bk.imdgpoc.config;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.core.HazelcastInstance;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import pl.aml.bk.hazelcastpoc.cache.InfoCacheInitializer;
+import pl.aml.bk.imdgpoc.cache.InfoCacheInitializer;
 
 import static com.hazelcast.core.Hazelcast.newHazelcastInstance;
 

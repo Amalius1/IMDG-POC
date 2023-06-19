@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc;
+package pl.aml.bk.imdgpoc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

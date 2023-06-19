@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.config;
+package pl.aml.bk.imdgpoc.config;
 
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;

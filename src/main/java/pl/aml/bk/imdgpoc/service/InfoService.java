@@ -1,9 +1,9 @@
-package pl.aml.bk.hazelcastpoc.service;
+package pl.aml.bk.imdgpoc.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
-import pl.aml.bk.hazelcastpoc.repository.InfoRepository;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.repository.InfoRepository;
 
 import java.util.List;
 import java.util.UUID;

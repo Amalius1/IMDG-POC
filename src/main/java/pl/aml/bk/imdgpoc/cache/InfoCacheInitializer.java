@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.cache;
+package pl.aml.bk.imdgpoc.cache;
 
 
 import com.hazelcast.core.HazelcastInstance;
@@ -7,7 +7,7 @@ import com.hazelcast.cp.lock.FencedLock;
 import com.hazelcast.map.IMap;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import pl.aml.bk.hazelcastpoc.controller.model.InfoDto;
+import pl.aml.bk.imdgpoc.controller.model.InfoDto;
 
 import java.net.InetAddress;
 import java.util.UUID;

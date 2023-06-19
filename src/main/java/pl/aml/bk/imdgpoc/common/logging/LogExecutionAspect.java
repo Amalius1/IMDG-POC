@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.common.logging;
+package pl.aml.bk.imdgpoc.common.logging;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

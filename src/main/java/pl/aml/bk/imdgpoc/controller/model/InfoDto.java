@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.controller.model;
+package pl.aml.bk.imdgpoc.controller.model;
 
 import java.io.Serializable;
 import java.util.UUID;

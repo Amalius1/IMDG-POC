@@ -1,4 +1,4 @@
-package pl.aml.bk.hazelcastpoc.common.logging;
+package pl.aml.bk.imdgpoc.common.logging;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
