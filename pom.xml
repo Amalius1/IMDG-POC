@@ -15,7 +15,9 @@
     <description>Hazelcast and Redis POC</description>
     <properties>
         <java.version>17</java.version>
+        <spring-cloud.version>2022.0.1</spring-cloud.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +41,21 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
+
+        <!--   ZIPKIN AND SLEUTH     -->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+
 
         <!--	HAZELCAST	-->
         <dependency>

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hazelcast-poc
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: hazelcast-poc
@@ -27,7 +27,7 @@ spec:
               port: 8080
               path: /actuator/health
             initialDelaySeconds: 30
-            periodSeconds: 3
+            periodSeconds: 10
           readinessProbe:
             httpGet:
               port: 8080

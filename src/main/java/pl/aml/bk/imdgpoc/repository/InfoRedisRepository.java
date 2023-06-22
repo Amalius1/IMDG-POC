@@ -40,7 +40,17 @@ public class InfoRedisRepository implements InfoRepository {
     }
 
     @Override
+    public List<InfoDto> findPage(int pageSize, int pageNumber) {
+        return null;
+    }
+
+    @Override
     public BigInteger count() {
         return null;
+    }
+
+    @Override
+    public boolean delete(UUID id) {
+        return false;
     }
 }

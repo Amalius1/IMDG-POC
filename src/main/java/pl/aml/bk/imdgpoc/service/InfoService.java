@@ -36,10 +36,14 @@ public class InfoService {
     }
 
     public boolean delete(UUID id) {
-        return false;
+        return infoIMDGRepository.delete(id);
     }
 
     public BigInteger count() {
         return infoIMDGRepository.count();
+    }
+
+    public List<InfoDto> getPage(Integer size, Integer number) {
+        return infoIMDGRepository.findPage(size, number);
     }
 }
