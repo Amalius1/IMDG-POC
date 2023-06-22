@@ -1,0 +1,8 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'prometheus,health'
+
+parameters:
+  initialCount: 1000000

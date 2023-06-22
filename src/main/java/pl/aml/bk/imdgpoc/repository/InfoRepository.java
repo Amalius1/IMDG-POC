@@ -18,6 +18,10 @@ public interface InfoRepository {
 
     List<InfoDto> findAll();
 
+    List<InfoDto> findPage(int pageSize, int pageNumber);
+
     BigInteger count();
+
+    boolean delete(UUID id);
 
 }

@@ -70,8 +70,28 @@ public class InfoHazelcastRepository implements InfoRepository {
     }
 
     @Override
+    @LogExecutionTime
     public BigInteger count() {
         IMap<UUID, InfoDto> infoCache = hazelcastInstance.getMap(HazelcastStatics.INFO_CACHE);
         return BigInteger.valueOf(infoCache.size());
     }
+
+    @Override
+    public boolean delete(UUID id) {
+        if (infoByIdExists(id)) {
+            IMap<UUID, InfoDto> infoCache = hazelcastInstance.getMap(HazelcastStatics.INFO_CACHE);
+            infoCache.delete(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    @LogExecutionTime
+    public List<InfoDto> findPage(int pageSize, int pageNumber) {
+        int skip = pageSize * (pageNumber - 1);
+        IMap<UUID, InfoDto> infoCache = hazelcastInstance.getMap(HazelcastStatics.INFO_CACHE);
+        return infoCache.values().stream().skip(skip).limit(pageSize).toList();
+    }
+
 }

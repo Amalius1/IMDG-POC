@@ -9,6 +9,7 @@ import pl.aml.bk.imdgpoc.service.InfoService;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -22,6 +23,13 @@ public class InfoController {
     public ResponseEntity<List<InfoDto>> getInfoList() {
         List<InfoDto> infoList = infoService.getInfoList();
         return ResponseEntity.ok(infoList);
+    }
+
+    @GetMapping("/list/page")
+    public ResponseEntity<List<InfoDto>> getInfoListPage(@RequestParam Optional<Integer> pageNumber, @RequestParam Optional<Integer> pageSize) {
+        Integer size = pageSize.filter(x -> x > 0).orElse(10);
+        Integer number = pageNumber.filter(x -> x > 0).orElse(1);
+        return ResponseEntity.ok(infoService.getPage(size, number));
     }
 
     @GetMapping("/get")
